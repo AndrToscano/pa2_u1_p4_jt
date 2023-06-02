@@ -21,20 +21,42 @@ public class EstudianteRepoImpl implements EstudianteRepo{
 	@Override
 	public void actualizar(Estudiante estudiante) {
 		
+		this.eliminar(estudiante.getCedula());
+		this.insertar(estudiante);
 	
 	}
 
 	@Override
 	public Estudiante seleccionar(String cedula) {
+		Estudiante estudianteEncontrado = new Estudiante();
 		
-		return null;
+		for(Estudiante estudiante: baseDatos) {
+			//Siempre evaluar por le elemento que sabemos no va a ser nulo, 
+			//para evitar errores en compilacion
+			
+			if(cedula.equals(estudiante.getCedula())) {
+				estudianteEncontrado = estudiante;
+			}
+		}
+		
+		return estudianteEncontrado;
 	}
 
 	@Override
 	public void eliminar(String cedula) {
 		
+		Estudiante estudiante = this.seleccionar(cedula);
+		baseDatos.remove(estudiante);
 		
 	}
+
+	@Override
+	public List<Estudiante> seleccionarTodos() {
+		
+		return baseDatos;
+	}
+	
+	
 
 	
 }
