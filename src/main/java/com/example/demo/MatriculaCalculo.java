@@ -34,6 +34,8 @@ public class MatriculaCalculo {
 			Materia materia = new Materia();
 			
 			materia.setNombre("P. Web");
+			
+			System.out.println("Se inserto materia ");
 		}
 		
 		else {
