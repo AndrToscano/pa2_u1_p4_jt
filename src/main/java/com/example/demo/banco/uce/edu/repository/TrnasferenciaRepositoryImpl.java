@@ -47,4 +47,12 @@ public class TrnasferenciaRepositoryImpl  implements TransferenciaRepository{
 		return transferenciaEncontrado;
 	}
 
+	@Override
+	public List<Transferencia> reporteTransferencia() {
+		
+		return baseDatos;
+	}
+	
+	
+
 }
