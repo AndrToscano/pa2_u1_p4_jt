@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.banco.uce.edu.repository.CuentaRepository;
 import com.example.demo.banco.uce.edu.repository.TransferenciaRepository;
 import com.example.demo.banco.uce.edu.repository.modelo.Cuenta;
+import com.example.demo.banco.uce.edu.repository.modelo.Impuesto;
 import com.example.demo.banco.uce.edu.repository.modelo.Transferencia;
 
 @Service
@@ -22,12 +23,17 @@ public class TransferenciaServiceImpl implements TransferenciaService{
 	private CuentaRepository cuentaRepository;
 	
 	@Autowired
-	@Qualifier("Internacional")
+	@Qualifier("Nacional")
 	private MontoDebitarService montoDebitarService;
+	
+	@Autowired
+	private Impuesto impuesto;
 	
 	@Override
 	public void guardar(Transferencia transferencia) {
 		
+		System.out.println("La transfeencia se va a calcular con el IVA: ");
+		System.out.println(impuesto.getSalario());
 		this.transferenciaRepository.insertar(transferencia);
 	}
 
